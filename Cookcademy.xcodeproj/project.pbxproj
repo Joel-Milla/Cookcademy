@@ -56,9 +56,10 @@
 			isa = PBXGroup;
 			children = (
 				FB46897D2B0015CD005E9437 /* CookcademyApp.swift */,
-				FB46897F2B0015CD005E9437 /* ContentView.swift */,
 				FB46898E2B001F9B005E9437 /* AllRecipes.swift */,
-				FB46898B2B001679005E9437 /* Model */,
+				FB4689AB2B002F42005E9437 /* ViewModels */,
+				FB4689AA2B002F1F005E9437 /* Views */,
+				FB46898B2B001679005E9437 /* Models */,
 				FB4689812B0015D1005E9437 /* Assets.xcassets */,
 				FB4689832B0015D1005E9437 /* Preview Content */,
 			);
@@ -73,12 +74,27 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		FB46898B2B001679005E9437 /* Model */ = {
+		FB46898B2B001679005E9437 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				FB46898C2B001686005E9437 /* Recipe.swift */,
 			);
-			path = Model;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FB4689AA2B002F1F005E9437 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FB46897F2B0015CD005E9437 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FB4689AB2B002F42005E9437 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
