@@ -17,6 +17,7 @@
 		FB4689B32B0073C5005E9437 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4689B22B0073C5005E9437 /* AppColor.swift */; };
 		FB4689CF2B00821A005E9437 /* RecipeCategoryGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4689CE2B00821A005E9437 /* RecipeCategoryGridView.swift */; };
 		FBB24DB62B06E371005A1711 /* ModifyRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB24DB52B06E371005A1711 /* ModifyRecipeView.swift */; };
+		FBB24DB82B06E60D005A1711 /* ModifyMainInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB24DB72B06E60D005A1711 /* ModifyMainInformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		FB4689B22B0073C5005E9437 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		FB4689CE2B00821A005E9437 /* RecipeCategoryGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryGridView.swift; sourceTree = "<group>"; };
 		FBB24DB52B06E371005A1711 /* ModifyRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecipeView.swift; sourceTree = "<group>"; };
+		FBB24DB72B06E60D005A1711 /* ModifyMainInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyMainInformationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				FBB24DB52B06E371005A1711 /* ModifyRecipeView.swift */,
+				FBB24DB72B06E60D005A1711 /* ModifyMainInformationView.swift */,
 			);
 			path = ModifyRecipes;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				FBB24DB62B06E371005A1711 /* ModifyRecipeView.swift in Sources */,
 				FB4689AD2B0030B8005E9437 /* RecipeData.swift in Sources */,
 				FB46897E2B0015CD005E9437 /* CookcademyApp.swift in Sources */,
+				FBB24DB82B06E60D005A1711 /* ModifyMainInformationView.swift in Sources */,
 				FB4689B32B0073C5005E9437 /* AppColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,7 +265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -318,7 +322,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
