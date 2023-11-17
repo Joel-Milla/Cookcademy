@@ -16,6 +16,7 @@
 		FB4689B12B006D14005E9437 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4689B02B006D14005E9437 /* RecipeDetailView.swift */; };
 		FB4689B32B0073C5005E9437 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4689B22B0073C5005E9437 /* AppColor.swift */; };
 		FB4689CF2B00821A005E9437 /* RecipeCategoryGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4689CE2B00821A005E9437 /* RecipeCategoryGridView.swift */; };
+		FBB24DB62B06E371005A1711 /* ModifyRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB24DB52B06E371005A1711 /* ModifyRecipeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		FB4689B02B006D14005E9437 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		FB4689B22B0073C5005E9437 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		FB4689CE2B00821A005E9437 /* RecipeCategoryGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryGridView.swift; sourceTree = "<group>"; };
+		FBB24DB52B06E371005A1711 /* ModifyRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecipeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +92,8 @@
 		FB4689AA2B002F1F005E9437 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FB4689CE2B00821A005E9437 /* RecipeCategoryGridView.swift */,
-				FB46897F2B0015CD005E9437 /* RecipesListView.swift */,
-				FB4689B02B006D14005E9437 /* RecipeDetailView.swift */,
+				FBB24DB32B06E323005A1711 /* ExploreRecipes */,
+				FBB24DB42B06E348005A1711 /* ModifyRecipes */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -104,6 +105,24 @@
 				FB4689B22B0073C5005E9437 /* AppColor.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FBB24DB32B06E323005A1711 /* ExploreRecipes */ = {
+			isa = PBXGroup;
+			children = (
+				FB4689CE2B00821A005E9437 /* RecipeCategoryGridView.swift */,
+				FB46897F2B0015CD005E9437 /* RecipesListView.swift */,
+				FB4689B02B006D14005E9437 /* RecipeDetailView.swift */,
+			);
+			path = ExploreRecipes;
+			sourceTree = "<group>";
+		};
+		FBB24DB42B06E348005A1711 /* ModifyRecipes */ = {
+			isa = PBXGroup;
+			children = (
+				FBB24DB52B06E371005A1711 /* ModifyRecipeView.swift */,
+			);
+			path = ModifyRecipes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +199,7 @@
 				FB4689B12B006D14005E9437 /* RecipeDetailView.swift in Sources */,
 				FB4689CF2B00821A005E9437 /* RecipeCategoryGridView.swift in Sources */,
 				FB4689802B0015CD005E9437 /* RecipesListView.swift in Sources */,
+				FBB24DB62B06E371005A1711 /* ModifyRecipeView.swift in Sources */,
 				FB4689AD2B0030B8005E9437 /* RecipeData.swift in Sources */,
 				FB46897E2B0015CD005E9437 /* CookcademyApp.swift in Sources */,
 				FB4689B32B0073C5005E9437 /* AppColor.swift in Sources */,
@@ -323,6 +343,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -351,6 +372,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
