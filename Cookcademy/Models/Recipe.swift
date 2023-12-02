@@ -49,7 +49,7 @@ struct MainInformation {
     }
 }
 
-struct Ingredient {
+struct Ingredient: RecipeComponent {
     var name:String
     var quantity: Double
     var unit: Unit
@@ -79,11 +79,30 @@ struct Ingredient {
         
         var singularName: String { String(rawValue.dropLast()) }
     }
+    
+    init(name: String, quantity: Double, unit: Unit) {
+        self.name = name
+        self.quantity = quantity
+        self.unit = unit
+    }
+    
+    init() {
+        self.init(name: "", quantity: 0.0, unit: .none)
+    }
 }
 
-struct Direction {
+struct Direction: RecipeComponent {
     var description: String
     var isOptional: Bool
+    
+    init(description: String, isOptional: Bool) {
+        self.description = description
+        self.isOptional = isOptional
+    }
+    
+    init() {
+        self.init(description: "", isOptional: false)
+    }
 }
 
 extension Recipe {
