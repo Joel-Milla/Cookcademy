@@ -1,6 +1,6 @@
 import SwiftUI
 
-protocol RecipeComponent {
+protocol RecipeComponent: CustomStringConvertible {
     init()
 }
 
@@ -9,39 +9,34 @@ protocol ModifyComponentView: View {
     init(component: Binding<Component>, createAction: @escaping (Component) -> Void)
 }
 
-struct ModifyComponentsView<Component: RecipeComponent, DestinationView: ModifyComponentView>: View {
-    @Binding var ingredients: [Ingredient]
-    @State private var newIngredient = Ingredient(name: "",
-                                                  quantity: 0.0,
-                                                  unit: .none)
+struct ModifyComponentsView<Component: RecipeComponent, DestinationView: ModifyComponentView>: View where DestinationView.Component == Component {
+    @Binding var components: [Component]
+    @State private var newComponent = Component()
     
     var body: some View {
         VStack {
-            if ingredients.isEmpty {
+            let addComponentsView = DestinationView(component: $newComponent) { component in
+                components.append(component)
+                newComponent = Component()
+            }.navigationTitle("Add component")
+            if components.isEmpty {
                 Spacer()
-                NavigationLink("Add the first ingredient",
-                               destination: ModifyIngredientView(component:
-                                                                    $newIngredient) {
-                    ingredient in
-                    ingredients.append(ingredient)
-                    newIngredient = Ingredient(name: "", quantity: 0.0, unit: .none)
-                })
+                NavigationLink("Add the first ingredient", destination: addComponentsView)
                 Spacer()
             } else {
+                HStack {
+                    Text("Components")
+                        .font(.title)
+                        .padding()
+                    Spacer()
+                }
                 List {
-                    ForEach(ingredients.indices, id: \.self) { index in
-                        let ingredient = ingredients[index]
-                        Text(ingredient.description)
+                    ForEach(components.indices, id: \.self) { index in
+                        let component = components[index]
+                        Text(component.description)
                     }
-                    NavigationLink("Add another ingredient",
-                                   destination: ModifyIngredientView(component:
-                                                                        $newIngredient
-                                                                    ){
-                        ingredient in
-                        ingredients.append(ingredient)
-                        newIngredient = Ingredient(name: "", quantity: 0.0, unit: .none)
-                    })
-                    .buttonStyle(PlainButtonStyle())
+                    NavigationLink("Add another component", destination: addComponentsView)
+                        .buttonStyle(PlainButtonStyle())
                 }
             }
         }
@@ -49,15 +44,15 @@ struct ModifyComponentsView<Component: RecipeComponent, DestinationView: ModifyC
 }
 
 struct ModifyIngredientsView_Previews: PreviewProvider {
-    @State static var emptyIngredients = [Ingredient]()
     @State static var recipe = Recipe.testRecipes[1]
-
+    @State static var emptyIngredients = [Ingredient]()
+    
     static var previews: some View {
         NavigationView {
-            ModifyComponentsView<Ingredient, ModifyIngredientView>(ingredients: $emptyIngredients)
+            ModifyComponentsView<Ingredient, ModifyIngredientView>(components: $emptyIngredients)
         }
         NavigationView {
-            ModifyComponentsView<Ingredient, ModifyIngredientView>(ingredients: $recipe.ingredients)
+            ModifyComponentsView<Ingredient, ModifyIngredientView>(components: $recipe.ingredients)
         }
     }
 }
