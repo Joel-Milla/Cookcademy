@@ -9,7 +9,7 @@ protocol ModifyComponentView: View {
     init(component: Binding<Component>, createAction: @escaping (Component) -> Void)
 }
 
-struct ModifyComponentsView: View {
+struct ModifyComponentsView<Component: RecipeComponent, DestinationView: ModifyComponentView>: View {
     @Binding var ingredients: [Ingredient]
     @State private var newIngredient = Ingredient(name: "",
                                                   quantity: 0.0,
@@ -20,7 +20,7 @@ struct ModifyComponentsView: View {
             if ingredients.isEmpty {
                 Spacer()
                 NavigationLink("Add the first ingredient",
-                               destination: ModifyIngredientView(ingredient:
+                               destination: ModifyIngredientView(component:
                                                                     $newIngredient) {
                     ingredient in
                     ingredients.append(ingredient)
@@ -34,7 +34,7 @@ struct ModifyComponentsView: View {
                         Text(ingredient.description)
                     }
                     NavigationLink("Add another ingredient",
-                                   destination: ModifyIngredientView(ingredient:
+                                   destination: ModifyIngredientView(component:
                                                                         $newIngredient
                                                                     ){
                         ingredient in
@@ -50,9 +50,14 @@ struct ModifyComponentsView: View {
 
 struct ModifyIngredientsView_Previews: PreviewProvider {
     @State static var emptyIngredients = [Ingredient]()
+    @State static var recipe = Recipe.testRecipes[1]
+
     static var previews: some View {
         NavigationView {
-            ModifyComponentsView(ingredients: $emptyIngredients)
+            ModifyComponentsView<Ingredient, ModifyIngredientView>(ingredients: $emptyIngredients)
+        }
+        NavigationView {
+            ModifyComponentsView<Ingredient, ModifyIngredientView>(ingredients: $recipe.ingredients)
         }
     }
 }
