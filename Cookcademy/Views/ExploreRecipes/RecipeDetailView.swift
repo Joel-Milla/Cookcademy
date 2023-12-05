@@ -13,6 +13,8 @@ struct RecipeDetailView: View {
     private let listBackgroundColor = AppColor.background
     private let listTextColor = AppColor.foreground
     
+    @State private var isPresenting = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -33,7 +35,7 @@ struct RecipeDetailView: View {
                         let ingredient = recipe.ingredients[index]
                         Text(ingredient.description)
                     }.listRowBackground(listBackgroundColor)
-                     .foregroundStyle(listTextColor)
+                        .foregroundStyle(listTextColor)
                 } header: {
                     Text("Ingredients")
                 }
@@ -46,13 +48,35 @@ struct RecipeDetailView: View {
                                  + "\(direction.description)")
                         }
                     }.listRowBackground(listBackgroundColor)
-                     .foregroundStyle(listTextColor)
+                        .foregroundStyle(listTextColor)
                 } header: {
                     Text("Directions")
                 }
             }
         }
         .navigationTitle("\(recipe.mainInformation.name)")
+        .toolbar {
+            ToolbarItem {
+                HStack {
+                    Button("Edit") {
+                        isPresenting = true
+                    }
+                }
+            }
+        }
+        .sheet(isPresented: $isPresenting) {
+            NavigationStack {
+                ModifyRecipeView(recipe: $recipe)
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Save") {
+                                isPresenting = false
+                            }
+                        }
+                    }
+                    .navigationTitle("Edit Recipe")
+            }
+        }
     }
 }
 
