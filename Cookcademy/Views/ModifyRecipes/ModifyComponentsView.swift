@@ -2,6 +2,18 @@ import SwiftUI
 
 protocol RecipeComponent: CustomStringConvertible {
     init()
+    static func singularName() -> String
+    static func pluralName() -> String
+}
+
+extension RecipeComponent {
+    static func singularName() -> String {
+        String(describing: self).lowercased()
+    }
+    
+    static func pluralName() -> String {
+        self.singularName() + "s"
+    }
 }
 
 protocol ModifyComponentView: View {
@@ -18,14 +30,14 @@ struct ModifyComponentsView<Component: RecipeComponent, DestinationView: ModifyC
             let addComponentsView = DestinationView(component: $newComponent) { component in
                 components.append(component)
                 newComponent = Component()
-            }.navigationTitle("Add component")
+            }.navigationTitle("Add \(Component.singularName().capitalized)")
             if components.isEmpty {
                 Spacer()
-                NavigationLink("Add the first ingredient", destination: addComponentsView)
+                NavigationLink("Add the first \(Component.singularName())", destination: addComponentsView)
                 Spacer()
             } else {
                 HStack {
-                    Text("Components")
+                    Text(Component.pluralName().capitalized)
                         .font(.title)
                         .padding()
                     Spacer()
@@ -35,7 +47,7 @@ struct ModifyComponentsView<Component: RecipeComponent, DestinationView: ModifyC
                         let component = components[index]
                         Text(component.description)
                     }
-                    NavigationLink("Add another component", destination: addComponentsView)
+                    NavigationLink("Add another \(Component.singularName())", destination: addComponentsView)
                         .buttonStyle(PlainButtonStyle())
                 }
             }
@@ -46,13 +58,20 @@ struct ModifyComponentsView<Component: RecipeComponent, DestinationView: ModifyC
 struct ModifyIngredientsView_Previews: PreviewProvider {
     @State static var recipe = Recipe.testRecipes[1]
     @State static var emptyIngredients = [Ingredient]()
+    @State static var emptyDirection = [Direction]()
     
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             ModifyComponentsView<Ingredient, ModifyIngredientView>(components: $emptyIngredients)
         }
-        NavigationView {
+        NavigationStack {
             ModifyComponentsView<Ingredient, ModifyIngredientView>(components: $recipe.ingredients)
+        }
+        NavigationStack {
+            ModifyComponentsView<Direction, ModifyDirectionView>(components: $emptyDirection)
+        }
+        NavigationStack {
+            ModifyComponentsView<Direction, ModifyDirectionView>(components: $recipe.directions)
         }
     }
 }
