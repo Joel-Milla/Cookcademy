@@ -58,6 +58,11 @@ struct RecipeDetailView: View {
         .toolbar {
             ToolbarItem {
                 HStack {
+                    Button {
+                        recipe.isFavorite.toggle()
+                    } label: {
+                        Image(systemName: recipe.isFavorite ? "heart.fill" : "heart")
+                    }
                     Button("Edit") {
                         isPresenting = true
                     }
