@@ -12,10 +12,12 @@ struct MainTabView: View {
     
     var body: some View {
         TabView {
-            RecipeCategoryGridView()
-                .tabItem {
-                    Label("Recipes", systemImage: "list.dash")
-                }
+            NavigationStack {
+                RecipeCategoryGridView()
+            }
+            .tabItem {
+                Label("Recipes", systemImage: "list.dash")
+            }
             NavigationStack {
                 RecipesListView(category: .breakfast)
             }
@@ -29,8 +31,6 @@ struct MainTabView: View {
 
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            MainTabView()
-        }
+        MainTabView()
     }
 }
