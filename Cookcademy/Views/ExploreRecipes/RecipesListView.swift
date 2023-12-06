@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecipesListView: View {
     @EnvironmentObject private var recipeData: RecipeData
-    let category: MainInformation.Category
+    let viewStyle: ViewStyle
     
     private let listBackgroundColor = AppColor.background
     private let listTextColor = AppColor.foreground
@@ -63,12 +63,27 @@ struct RecipesListView: View {
 }
 
 extension RecipesListView {
+    enum ViewStyle {
+        case favorites
+        case singleCategory(MainInformation.Category)
+    }
+    
     private var recipes: [Recipe] {
-        recipeData.recipes(for: category)
+        switch (viewStyle) {
+        case .favorites:
+            return recipeData.favoriteRecipes
+        case let .singleCategory(category):
+            return recipeData.recipes(for: category)
+        }
     }
     
     private var navigationTitle: String {
-        "\(category.rawValue) Recipes"
+        switch (viewStyle) {
+        case .favorites:
+            return "Favorite Recipes"
+        case let .singleCategory(category):
+            return "\(category.rawValue) Recipes"
+        }
     }
     
     func binding(for recipe: Recipe) -> Binding<Recipe> {
@@ -82,8 +97,7 @@ extension RecipesListView {
 struct RecipesListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            RecipesListView(category: .breakfast)
-                .environmentObject(RecipeData())
-        }
+            RecipesListView(viewStyle: .singleCategory(.breakfast))
+        }.environmentObject(RecipeData())
     }
 }

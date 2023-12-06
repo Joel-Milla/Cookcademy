@@ -19,8 +19,7 @@ struct RecipeCategoryGridView: View {
             ScrollView {
                 LazyVGrid(columns: [GridItem(), GridItem()], content: {
                     ForEach(MainInformation.Category.allCases, id: \.self) { category in
-                        NavigationLink(destination: RecipesListView(category: category)
-                            .environmentObject(recipeData)
+                        NavigationLink(destination: RecipesListView(viewStyle: .singleCategory(category))
                                        , label: {
                             CategoryView(category: category)
                         })
@@ -51,5 +50,6 @@ struct CategoryView: View {
 struct RecipeCategoryGridView_Previews: PreviewProvider {
     static var previews: some View {
         RecipeCategoryGridView()
+            .environmentObject(RecipeData())
     }
 }
