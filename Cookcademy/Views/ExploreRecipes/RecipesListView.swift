@@ -39,7 +39,7 @@ struct RecipesListView: View {
             }
         })
         .sheet(isPresented: $isPresenting, content: {
-            NavigationView {
+            NavigationStack {
                 ModifyRecipeView(recipe: $newRecipe)
                     .toolbar(content: {
                         ToolbarItem(placement: .cancellationAction) {
@@ -50,6 +50,9 @@ struct RecipesListView: View {
                         ToolbarItem(placement: .confirmationAction) {
                             if newRecipe.isValid {
                                 Button("Add") {
+                                    if case .favorites = viewStyle {
+                                        newRecipe.isFavorite = true
+                                    }
                                     recipeData.add(recipe: newRecipe)
                                     isPresenting = false
                                 }
