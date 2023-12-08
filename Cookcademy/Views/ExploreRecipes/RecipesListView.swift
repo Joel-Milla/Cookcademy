@@ -32,6 +32,12 @@ struct RecipesListView: View {
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
+                    switch (viewStyle) {
+                    case .favorites:
+                        break
+                    case let .singleCategory(category):
+                        newRecipe.mainInformation.category = category
+                    }
                     isPresenting = true
                 }, label: {
                     Image(systemName: "plus")
