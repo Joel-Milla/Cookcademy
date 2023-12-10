@@ -12,7 +12,7 @@ struct RecipeCategoryGridView: View {
     
     var body: some View {
         let columns = [GridItem(), GridItem()]
-        NavigationStack {
+        NavigationView {
             ScrollView {
                 LazyVGrid(columns: columns, content: {
                     ForEach(MainInformation.Category.allCases, id: \.self) { category in
