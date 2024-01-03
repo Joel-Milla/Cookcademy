@@ -68,6 +68,7 @@ struct RecipeDetailView: View {
                 HStack {
                     Button {
                         recipe.isFavorite.toggle()
+                        recipeData.savesRecipes()
                     } label: {
                         Image(systemName: recipe.isFavorite ? "heart.fill" : "heart")
                     }
