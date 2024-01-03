@@ -10,8 +10,8 @@ import SwiftUI
 struct RecipeDetailView: View {
     @Binding var recipe: Recipe
     
-    private let listBackgroundColor = AppColor.background
-    private let listTextColor = AppColor.foreground
+    @AppStorage("listBackgroundColor") private var listBackgroundColor = AppColor.background
+    @AppStorage("listTextColor") private var listTextColor = AppColor.foreground
     
     @State private var isPresenting = false
     
