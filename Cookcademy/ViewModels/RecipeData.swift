@@ -13,7 +13,7 @@ class RecipeData: ObservableObject {
     var favoriteRecipes: [Recipe] {
         recipes.filter {$0.isFavorite}
     }
-
+    
     func recipes(for category: MainInformation.Category) -> [Recipe] {
         var filteredRecipes = [Recipe]()
         for recipe in recipes {
@@ -25,9 +25,10 @@ class RecipeData: ObservableObject {
     }
     func add(recipe: Recipe) {
         if recipe.isValid {
-          recipes.append(recipe)
+            recipes.append(recipe)
+            savesRecipes()
         }
-      }
+    }
     
     func index(of recipe: Recipe) -> Int? {
         for i in recipes.indices {
