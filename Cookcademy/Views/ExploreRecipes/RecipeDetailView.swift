@@ -12,7 +12,7 @@ struct RecipeDetailView: View {
     
     @AppStorage("listBackgroundColor") private var listBackgroundColor = AppColor.background
     @AppStorage("listTextColor") private var listTextColor = AppColor.foreground
-    @AppStorage("hideOptionalSteps") private var hideOptionalSteps: Bool = true
+    @AppStorage("hideOptionalSteps") private var hideOptionalSteps: Bool = false
     
     @State private var isPresenting = false
     
@@ -41,29 +41,20 @@ struct RecipeDetailView: View {
                     Text("Ingredients")
                 }
                 Section {
-                    if hideOptionalSteps {
-                        let showDirections = recipe.directions.filter{$0.isOptional != true}
-                        ForEach(showDirections.indices, id: \.self) { index in
-                            let direction = showDirections[index]
+                    ForEach(recipe.directions.indices, id: \.self) { index in
+                        let direction = recipe.directions[index]
+                        if direction.isOptional && hideOptionalSteps {
+                            EmptyView()
+                        } else {
+                            let index = recipe.index(of: direction, excludingOptionalDirections: hideOptionalSteps) ?? 0
                             HStack {
                                 Text("\(index + 1). ").bold()
                                 Text("\(direction.isOptional ? "(Optional) " : "")"
                                      + "\(direction.description)")
                             }
-                        }.listRowBackground(listBackgroundColor)
-                            .foregroundStyle(listTextColor)
-                    } else {
-                        let showDirections = recipe.directions
-                        ForEach(showDirections.indices, id: \.self) { index in
-                            let direction = showDirections[index]
-                            HStack {
-                                Text("\(index + 1). ").bold()
-                                Text("\(direction.isOptional ? "(Optional) " : "")"
-                                     + "\(direction.description)")
-                            }
-                        }.listRowBackground(listBackgroundColor)
-                            .foregroundStyle(listTextColor)
-                    }
+                        }
+                    }.listRowBackground(listBackgroundColor)
+                        .foregroundStyle(listTextColor)
                 } header: {
                     Text("Directions")
                 }
