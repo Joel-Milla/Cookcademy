@@ -1,4 +1,4 @@
-# Contact Form Mobile App
+# Cookcademy Mobile App
 
 This project is a hands-on practice focused on creating an application  in for managing and sharing recipes SwiftUI (For iOS devices). The app lets you view preloaded recipes, add your own, and customize settings for a more personalized experience.
 
