@@ -8,12 +8,16 @@ This project is a hands-on practice focused on creating an application  in for m
 
 ## Features
 - **Browse Recipes**: Explore a variety of preloaded recipes in each category. Click on a recipe to see details like the author, ingredients, and cooking instructions.
+
 ![View of the recipe](Assets/recipe.gif)
 - **Favorites**: Mark recipes as favorites and access them quickly in the 'Favorites' tab. You can also edit recipe details as needed.
+  
 ![View of the recipe](Assets/favoritesEdit.gif)
 - **Add Your Own**: Easily add new recipes by clicking the '+' button. Fill in all the details and your recipe is ready.
+  
 ![View of the recipe](Assets/add.gif)
 - **Customize Settings**: Change the app's background and text colors. You can also choose to hide optional steps in recipes.
+  
 ![View of the recipe](Assets/settings.gif)
 
 ## Technologies Used
